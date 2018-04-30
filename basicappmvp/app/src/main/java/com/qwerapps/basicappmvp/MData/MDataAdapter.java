@@ -1,10 +1,9 @@
-package com.qwerapps.basicappmvp.categories;
+package com.qwerapps.basicappmvp.MData;
 
 import android.app.Activity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
-import android.text.method.HideReturnsTransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,16 +22,20 @@ import butterknife.ButterKnife;
  * Created by IT02106 on 21/04/2018.
  */
 
-public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder>{
+public class MDataAdapter extends RecyclerView.Adapter<MDataAdapter.ViewHolder>{
 
     List<MData> mItems;
     Activity activity;
 
-    CategoriesAdapter(List<MData> mdatas, Activity activity)
+    MDataContract.Presenter mDataPresenter;
+
+    MDataAdapter(List<MData> mdatas, Activity activity, MDataContract.Presenter mDataPresenter)
     {
         super();
         mItems = mdatas;
         this.activity = activity;
+
+        this.mDataPresenter = mDataPresenter;
     }
 
     @Override

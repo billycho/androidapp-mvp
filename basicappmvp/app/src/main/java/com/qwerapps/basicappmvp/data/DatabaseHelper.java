@@ -8,9 +8,9 @@ import android.util.Log;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
-import com.j256.ormlite.table.TableUtils;
 import com.qwerapps.basicappmvp.R;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,8 +34,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     {
         super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config );
         this.myContext = context;
-
-        checkDataBase();
     }
 
 
@@ -82,14 +80,40 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return mDataDao;
     }
 
+    public void createDataBase() throws IOException
+    {
+        boolean dbExist = checkDataBase();
+
+        if(dbExist)
+        {
+
+        }
+        else
+        {
+            this.getReadableDatabase();
+
+            try
+            {
+                copyDataBase();
+            }
+            catch (IOException e)
+            {
+                throw new Error("Error copying database");
+            }
+
+        }
+
+    }
     private boolean checkDataBase()
     {
+//        File dbtest = new File("DB_PATH + DATABASE_NAME");
+//        return dbtest.exists();
+
         SQLiteDatabase checkDB = null;
 
         try {
             String myPath = DB_PATH + DATABASE_NAME;
             checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
-
         } catch(SQLiteException e)
         {
 
@@ -106,8 +130,10 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private void copyDataBase() throws IOException
     {
+
         InputStream myInput = myContext.getAssets().open(DATABASE_NAME);
 
+        Log.d("asdaxxx",myInput.toString());
         String outFileName = DB_PATH + DATABASE_NAME;
 
         OutputStream myOutput = new FileOutputStream(outFileName);

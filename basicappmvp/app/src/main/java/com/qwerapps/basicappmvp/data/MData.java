@@ -11,6 +11,9 @@ import java.io.Serializable;
 public class MData implements Serializable{
     private static final long serialVersionUID = -222864131214757024L;
 
+    public static final String ID_FIELD = "data_id";
+    public static final String CATEGORY_ID_FIELD = "categories_id";
+
     @DatabaseField(generatedId = true, columnName = "data_id")
     private int mDataId;
 

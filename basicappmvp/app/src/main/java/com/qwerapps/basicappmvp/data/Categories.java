@@ -17,6 +17,8 @@ public class Categories implements Serializable {
     @DatabaseField(columnName =  "category_name")
     public String categoryName;
 
+
+
     public Categories()
     {
 
@@ -26,5 +28,23 @@ public class Categories implements Serializable {
     {
         this.categoryName = name;
     }
+
+    public String getCategoryName()
+    {
+        return categoryName;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
 
 }
