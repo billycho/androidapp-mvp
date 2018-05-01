@@ -1,9 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.qwerapps.basicappmvp.Slideshow.SlideshowActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:showIn="@layout/activity_slideshow"
+tools:context="com.qwerapps.basicappmvp.Slideshow.SlideshowActivity"
+xmlns:ads="http://schemas.android.com/apk/res-auto">
 
-</android.support.constraint.ConstraintLayout>
+<android.support.v4.view.ViewPager
+    android:id="@+id/pager"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    />
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:paddingBottom="5dp">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        >
+        <Button
+            android:id="@+id/previous"
+            android:layout_width="@dimen/iconsize"
+            android:layout_height="@dimen/iconsize"
+            android:text="Left"
+            android:clickable="true"/>
+        <Button
+            android:id="@+id/copy"
+            android:layout_width="@dimen/iconsize"
+            android:layout_height="@dimen/iconsize"
+            android:layout_marginLeft="5dp"
+            android:clickable="true"
+            android:text="Copy"
+            />
+
+
+
+        <Button
+            android:id="@+id/share"
+            android:layout_width="@dimen/iconsize"
+            android:layout_height="@dimen/iconsize"
+            android:layout_marginLeft="5dp"
+            android:text="Share"
+            android:clickable="true"/>
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="@dimen/iconsize"
+            android:layout_height="@dimen/iconsize"
+            android:layout_marginLeft="5dp"
+            android:text="Right"
+            android:clickable="true"/>
+    </LinearLayout>
+</RelativeLayout>
+
+</RelativeLayout>

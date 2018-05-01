@@ -1,15 +1,19 @@
 package com.qwerapps.basicappmvp.categories;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 
 import com.j256.ormlite.dao.Dao;
 import com.qwerapps.basicappmvp.MData.MDataActivity;
 import com.qwerapps.basicappmvp.MData.MDataAdapter;
+import com.qwerapps.basicappmvp.Main2Activity;
 import com.qwerapps.basicappmvp.R;
 import com.qwerapps.basicappmvp.data.Categories;
 import com.qwerapps.basicappmvp.data.DatabaseHelper;
@@ -40,7 +44,13 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         ButterKnife.bind(this);
+
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       // getSupportActionBar().setDisplayUseLogoEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        getSupportActionBar().setIcon(R.drawable.logo);
 
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -63,5 +73,12 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesC
         Intent intent  = new Intent(this,MDataActivity.class);
         intent.putExtra("categoryId",categoryId);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 }

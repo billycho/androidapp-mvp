@@ -17,6 +17,8 @@ public class MData implements Serializable{
     @DatabaseField(generatedId = true, columnName = "data_id")
     private int mDataId;
 
+
+
     @DatabaseField(columnName = "data_value")
     private String mData;
 
@@ -44,13 +46,12 @@ public class MData implements Serializable{
         return mDataId;
     }
 
-    public void setmData(String mData)
-    {
-        this.mData = mData;
-    }
-
     public void setId(int id)
     {
         this.mDataId = id;
+    }
+
+    public Categories getCategories() {
+        return categories;
     }
 }

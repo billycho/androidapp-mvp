@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.qwerapps.basicappmvp.R;
+import com.qwerapps.basicappmvp.categories.CategoriesContract;
 import com.qwerapps.basicappmvp.data.MData;
 
 import java.util.List;
@@ -25,11 +26,11 @@ import butterknife.ButterKnife;
 public class MDataAdapter extends RecyclerView.Adapter<MDataAdapter.ViewHolder>{
 
     List<MData> mItems;
-    Activity activity;
+    MDataContract.View activity;
 
     MDataContract.Presenter mDataPresenter;
 
-    MDataAdapter(List<MData> mdatas, Activity activity, MDataContract.Presenter mDataPresenter)
+    MDataAdapter(List<MData> mdatas,  MDataContract.View activity, MDataContract.Presenter mDataPresenter)
     {
         super();
         mItems = mdatas;
@@ -64,6 +65,8 @@ public class MDataAdapter extends RecyclerView.Adapter<MDataAdapter.ViewHolder>{
                 }
                 else
                 {
+                    activity.showMData(position,mData.getCategories().getCategoryId());
+
                     Log.d("asdaxxx","Click");
 
                 }

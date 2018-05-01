@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".categories.CategoriesActivity">
+        <activity
+            android:name=".categories.CategoriesActivity"
+            android:icon="@drawable/logo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,7 +19,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".MData.MDataActivity" />
-        <activity android:name=".Slideshow.SlideshowActivity"></activity>
+        <activity android:name=".Slideshow.SlideshowActivity" />
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>

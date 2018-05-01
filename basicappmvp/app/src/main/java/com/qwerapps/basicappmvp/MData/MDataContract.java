@@ -14,7 +14,9 @@ public interface MDataContract {
     {
         void showMDatas(List<MData> mData);
 
-        void showMData(int dataId);
+        void showMData(int position, int categoryId);
+
+
     }
 
     interface Presenter

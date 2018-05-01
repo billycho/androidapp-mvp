@@ -5,9 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Slide;
 
 import com.j256.ormlite.dao.Dao;
 import com.qwerapps.basicappmvp.R;
+import com.qwerapps.basicappmvp.Slideshow.SlideshowActivity;
 import com.qwerapps.basicappmvp.categories.CategoriesPresenter;
 import com.qwerapps.basicappmvp.categories.CategoryAdapter;
 import com.qwerapps.basicappmvp.data.Categories;
@@ -30,6 +32,8 @@ public class MDataActivity extends AppCompatActivity implements MDataContract.Vi
     private DatabaseHelper databaseHelper;
 
     private MDataPresenter mDataPresenter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +60,11 @@ public class MDataActivity extends AppCompatActivity implements MDataContract.Vi
     }
 
     @Override
-    public void showMData(int dataId) {
+    public void showMData(int position,int categoryId) {
+        Intent intent  = new Intent(this, SlideshowActivity.class);
+        intent.putExtra("position", position);
+        intent.putExtra( "categoryId", categoryId);
 
+        startActivity(intent);
     }
 }
