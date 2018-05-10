@@ -47,4 +47,5 @@ dependencies {
 
     compile group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.1.1'
 
+    compile 'com.dynamitechetan.flowinggradient:flowinggradient:1.1'
 }

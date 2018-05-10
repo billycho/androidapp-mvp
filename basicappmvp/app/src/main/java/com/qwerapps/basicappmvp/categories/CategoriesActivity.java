@@ -1,26 +1,21 @@
 package com.qwerapps.basicappmvp.categories;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
+import android.graphics.Color;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
+import android.widget.RelativeLayout;
 
-import com.j256.ormlite.dao.Dao;
+import com.dynamitechetan.flowinggradient.FlowingGradientClass;
 import com.qwerapps.basicappmvp.MData.MDataActivity;
-import com.qwerapps.basicappmvp.MData.MDataAdapter;
-import com.qwerapps.basicappmvp.Main2Activity;
 import com.qwerapps.basicappmvp.R;
 import com.qwerapps.basicappmvp.data.Categories;
 import com.qwerapps.basicappmvp.data.DatabaseHelper;
-import com.qwerapps.basicappmvp.data.MData;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 import butterknife.BindView;
@@ -47,10 +42,12 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesC
 
         ButterKnife.bind(this);
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-       // getSupportActionBar().setDisplayUseLogoEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
-//        getSupportActionBar().setIcon(R.drawable.logo);
+        RelativeLayout rl = (RelativeLayout) findViewById(R.id.layout);
+        FlowingGradientClass grad = new FlowingGradientClass();
+        grad.setBackgroundResource(R.drawable.gradient)
+                .onRelativeLayout(rl)
+                .setTransitionDuration(4000)
+                .start();
 
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -59,6 +56,8 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesC
         databaseHelper = new DatabaseHelper(this);
         categoriesPresenter = new CategoriesPresenter(databaseHelper,this);
         categoriesPresenter.loadCategories();
+
+
 
     }
 

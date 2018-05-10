@@ -9,8 +9,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.dynamitechetan.flowinggradient.FlowingGradientClass;
 import com.qwerapps.basicappmvp.MData.MDataAdapter;
 import com.qwerapps.basicappmvp.R;
 import com.qwerapps.basicappmvp.data.Categories;
@@ -56,6 +58,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         final int x = i;
         viewHolder.dataText.setText(Html.fromHtml(category.getCategoryName()));
 
+
+
+        FlowingGradientClass grad = new FlowingGradientClass();
+        grad.setBackgroundResource(R.drawable.translate)
+                .onRelativeLayout( viewHolder.rv)
+                .setTransitionDuration(4000)
+                .start();
+
         viewHolder.setClickListener(new CategoryAdapter.ItemClickListener() {
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
@@ -87,6 +97,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
         @BindView(R.id.mdata)
         public TextView dataText;
+
+        @BindView(R.id.gradient_layout)
+        public RelativeLayout rv;
 
         public CategoryAdapter.ItemClickListener clickListener;
 
